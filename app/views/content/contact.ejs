@@ -1,0 +1,61 @@
+<!--
+COMP229-F2022-ASSIGNMENT1-822281549
+Sheila Donnelly
+Student #822281549
+October 7th, 2022
+-->
+
+<!--Contact Details Page-->
+<!--(Bootstrap - Card: Content Container)-->
+
+        <fieldset class="contact-card-fieldset">
+          <div class="card-body">
+               <h5 class="card-title">Sheila Jean Donnelly</h5>
+               <h6  class="card-subtitle mb-2 text-muted">Software Architect</h6>
+               <hr>
+               <h7  class="card-text">Sheila.donnelly@outlook.com</h7>
+               <p  class="card-text">1-640-329-6953</p>
+               <a href="https://www.linkedin.com/in/sheila-donnelly/" target="_blank" class="contact-link">LinkedIn</a>
+               <a href="https://github.com/LookyLuCU" target="_blank" class="contact-link">GitHub</a>
+          </div>
+        </fieldset>
+     
+  <!--Contact Me Form (Bootstrap: Forms) -->
+        <fieldset class="contact-form-fieldset">
+          <legend>Contact Sheila</legend>
+          <form>
+            <div class="mb-3 row g-3">
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
+                </div>
+              </div>
+              <div class="row g-3">
+                <div class="col">
+                  <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" placeholder="Phone Number" aria-label="Phone Number">
+                </div>
+              </div>
+              <br>
+              <div class="row g-3">
+                <div class="col">
+                  <label for="email_body" class="form-label">Message</label>
+                  <textarea class="form-control" id="email_body" rows="3"></textarea>
+                </div>
+              </div>
+              <br>
+              <div class="row g-3">
+                <div class="col">
+                  <a class="btn btn-primary btn-lg <%= (page == 'home') ? 'active' : ''; %> button-color" aria-current="page" href="/home">Submit</a>
+                </div>
+              </div>
+            </div>
+          </form>
+        </fieldset>
+     
+
+  

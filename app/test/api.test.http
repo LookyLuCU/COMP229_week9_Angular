@@ -1,0 +1,91 @@
+//just a file the REST cleint recognizes for testing requests
+//copy code from REST client extension
+
+//Click below "Send Request" button once POST details entered - URL, fields, field data
+
+POST http://localhost:3000/api/auth/login HTTP/1.1      //replace with your URL (i.e. localhost:3000) && app.js > api route && api.route > app.use routing post urls ==> somehow routes back to views > content > login.ejs?
+content-type: application/json
+
+{
+    //simulating an application
+    //fields taken from views > content > login.ejs (ie. routes from ProcessLoginPage on auth-api.routes page)
+    //data taken from existing Mongo Atlas user profile
+    "username": "Sam",
+    "password": "123456"
+}
+
+###     //separation tags - needed to send separate requests
+
+POST http://localhost:3000/api/auth/register HTTP/1.1      //replace with your URL (i.e. localhost:3000) && app.js > api route && api.route > app.use routing post urls ==> somehow routes back to views > content > login.ejs?
+content-type: application/json
+
+{
+    //simulating an application
+    //fields taken from views > content > login.ejs (ie. routes from ProcessLoginPage on auth-api.routes page)
+    //data taken from existing Mongo Atlas user profile
+    "username": "smcdonald",
+    "password": "123456",
+    "emailAddress": "smcdonald@yahoo.com",
+    "displayName": "Samuel McDonald"
+}
+
+###
+
+GET http://localhost:3000/api/auth/logout HTTP/1.1      //check router for POST/GET, replace with your URL (i.e. localhost:3000) && app.js > api route && api.route > app.use routing post urls ==> somehow routes back to views > content > login.ejs?
+content-type: application/json
+    //simulating an application
+    //no content needed for this one - will eventually need an id
+
+###
+
+GET http://localhost:3000/api/movies/list HTTP/1.1
+content-type: application/json
+//references app.js setupJWT Options > jwtFrom Req: As Bearer Toekn
+//sample token can be found from above login test request
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNWI3OGUxOWQyZTcxZGU4ZjIyMDRkNCIsImRpc3BsYXlOYW1lIjoic2FtIE1jRG9uYWxkIiwidXNlcm5hbWUiOiJTYW0iLCJlbWFpbEFkZHJlc3MiOiJzYW0ubWNkQHlhaG9vLmNvbSIsImlhdCI6MTY2NzU0MDU4NCwiZXhwIjoxNjY4MTQ1Mzg0fQ.mGmtUGFjSz1P2_BvHm9Pj7dUhLzINuwYuaWP_EL2dgQ
+//^^ this is now the request header (with token for auth)
+
+//will now return which user sen the request - user history has now been added from auth
+###
+
+GET http://localhost:3000/api/movies/63649bbdae25ccd138262dfe HTTP/1.1
+content-type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNWI3OGUxOWQyZTcxZGU4ZjIyMDRkNCIsImRpc3BsYXlOYW1lIjoic2FtIE1jRG9uYWxkIiwidXNlcm5hbWUiOiJTYW0iLCJlbWFpbEFkZHJlc3MiOiJzYW0ubWNkQHlhaG9vLmNvbSIsImlhdCI6MTY2NzU0MDU4NCwiZXhwIjoxNjY4MTQ1Mzg0fQ.mGmtUGFjSz1P2_BvHm9Pj7dUhLzINuwYuaWP_EL2dgQ
+
+
+###
+
+POST http://localhost:3000/api/movies/add HTTP/1.1      //replace with your URL (i.e. localhost:3000) && app.js > api route && api.route > app.use routing post urls ==> somehow routes back to views > content > login.ejs?
+content-type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNWI3OGUxOWQyZTcxZGU4ZjIyMDRkNCIsImRpc3BsYXlOYW1lIjoic2FtIE1jRG9uYWxkIiwidXNlcm5hbWUiOiJTYW0iLCJlbWFpbEFkZHJlc3MiOiJzYW0ubWNkQHlhaG9vLmNvbSIsImlhdCI6MTY2NzU0MDU4NCwiZXhwIjoxNjY4MTQ1Mzg0fQ.mGmtUGFjSz1P2_BvHm9Pj7dUhLzINuwYuaWP_EL2dgQ
+
+{
+    "name": "Titanic 2", 
+    "year": "2002", 
+    "director": "James Cameron",
+    "genre": "Romance",
+    "runtime": 300
+}
+
+###
+
+
+PUT http://localhost:3000/api/movies/edit/6364a805ae25ccd138262e0f HTTP/1.1      //replace with your URL (i.e. localhost:3000) && app.js > api route && api.route > app.use routing post urls ==> somehow routes back to views > content > login.ejs?
+content-type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNWI3OGUxOWQyZTcxZGU4ZjIyMDRkNCIsImRpc3BsYXlOYW1lIjoic2FtIE1jRG9uYWxkIiwidXNlcm5hbWUiOiJTYW0iLCJlbWFpbEFkZHJlc3MiOiJzYW0ubWNkQHlhaG9vLmNvbSIsImlhdCI6MTY2NzU0MDU4NCwiZXhwIjoxNjY4MTQ1Mzg0fQ.mGmtUGFjSz1P2_BvHm9Pj7dUhLzINuwYuaWP_EL2dgQ
+
+{
+    "name": "Titanic 2", 
+    "year": "2022", 
+    "director": "James Cameron",
+    "genre": "Horror",
+    "runtime": 600
+}
+
+
+###
+
+
+DELETE http://localhost:3000/api/movies/delete/6364a805ae25ccd138262e0f HTTP/1.1
+content-type: application/json
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzNWI3OGUxOWQyZTcxZGU4ZjIyMDRkNCIsImRpc3BsYXlOYW1lIjoic2FtIE1jRG9uYWxkIiwidXNlcm5hbWUiOiJTYW0iLCJlbWFpbEFkZHJlc3MiOiJzYW0ubWNkQHlhaG9vLmNvbSIsImlhdCI6MTY2NzU0MDU4NCwiZXhwIjoxNjY4MTQ1Mzg0fQ.mGmtUGFjSz1P2_BvHm9Pj7dUhLzINuwYuaWP_EL2dgQ
